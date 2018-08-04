@@ -1,17 +1,34 @@
 const { Router } = require('express');
 const passport = require('passport');
+
+const middlewares = require('../middlewares');
 const validation = require('./validation');
-const ctrl = require('./controller');
-const mdl = require('../middlewares');
+const controllers = require('./controllers');
 
 
 const router = Router();
 
 router
-  .get('/me', mdl.isAuth, ctrl.showMe)
-  .post('/', mdl.validate(validation.register), ctrl.registerNewUser)
-  .get('/logout', mdl.isAuth, ctrl.logout)
-  .post('/login', passport.authenticate('local', {}), ctrl.login);
+  .get(
+    '/me',
+    middlewares.isAuth,
+    controllers.getMe
+  )
+  .get(
+    '/logout',
+    middlewares.isAuth,
+    controllers.logout
+  )
+  .post(
+    '/',
+    middlewares.validate(validation.register),
+    controllers.register
+  )
+  .post(
+    '/login',
+    passport.authenticate('local', {}),
+    controllers.login
+  );
 
 
 module.exports = router;
