@@ -23,6 +23,16 @@ router
     middlewares.validate(validation.createItem),
     controllers.createItem
   )
+  .patch(
+    '/:id',
+    middlewares.isAuth,
+    controllers.updateItem
+  )
+  .delete(
+    '/:id',
+    middlewares.isAuth,
+    controllers.deleteItem,
+  );
 
 
 module.exports = router;

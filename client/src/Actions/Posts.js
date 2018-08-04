@@ -14,6 +14,13 @@ export const startAddItem = createAction(types.START_ADD_ITEM);
 export const addItem = createAction(types.ADD_ITEM);
 export const addItemError = createAction(types.ADD_ITEM_ERROR);
 
+export const startRemoveItem = createAction(types.START_REMOVE_ITEM);
+export const removeItem = createAction(types.REMOVE_ITEM);
+export const removeItemError = createAction(types.REMOVE_ITEM_ERROR);
+
+export const startUpdateItem = createAction(types.START_UPDATE_ITEM);
+export const updateItem = createAction(types.UPDATE_ITEM);
+export const updateItemError = createAction(types.UPDATE_ITEM_ERROR);
 
 export const loadItem = id => async dispatch => {
   try {
@@ -37,7 +44,9 @@ export const loadItems = () => async dispatch => {
 
 export const createItem = values => async dispatch => {
   try {
-    await axios.post('/api/posts', values);
+    const { data: post } = await axios.post('/api/posts', values);
+
+    dispatch(addItem(post));
 
     dispatch(push('/posts'));
 
@@ -50,3 +59,22 @@ export const createItem = values => async dispatch => {
     dispatch(handleError(e));
   }
 };
+
+export const deleteItem = id => async dispatch => {
+  if (!window.confirm('Are you sure?')) return;
+
+  try {
+    const { data: postId } = await axios.delete(`/api/posts/${ id }`);
+
+    dispatch(removeItem(postId));
+    dispatch(push('/posts'));
+
+    dispatch(Notifications.success({
+      title: 'Success',
+      message: 'Post was deleted'
+    }));
+
+  } catch (e) {
+    dispatch(handleError(e));
+  }
+}

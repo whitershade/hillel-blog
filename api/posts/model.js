@@ -9,10 +9,17 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  _creator: {
-    type: mongoose.Schema.Types.ObjectId,
+  addedBy: {
+    ref: 'UserModel',
     required: true,
+    type: mongoose.Schema.Types.ObjectId,
   },
+  show: { type: Boolean, default: true },
+  tags: [{type: String}],
+  comments: [{
+    ref: 'CommentModel',
+    type: mongoose.Schema.Types.ObjectId
+  }],
 }, { timestamps: true });
 
 

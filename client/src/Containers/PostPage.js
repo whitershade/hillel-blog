@@ -1,17 +1,26 @@
 import { connect } from 'react-redux';
 import Component from '../Pages/Post';
-import { loadItems as loadPosts, loadItem as LoadPost } from '../Actions/Posts';
+import {
+  loadItem as LoadPost,
+  deleteItem as deletePost
+} from '../Actions/Posts';
 
 
 const mapStateToProps = (state, props) => {
+  const post = state.posts.data[props.match.params.id];
+  const currentUserId = state.user.profile._id;
+  const canEdit = post && post.addedBy === currentUserId;
+
   return {
+    canEdit,
     id: props.match.params.id,
     post: state.posts.data[props.match.params.id]
   };
 }
 
 const mapDispatchToProps = dispatch => ({
-  loadData: (id) => dispatch(LoadPost(id))
+  loadData: (id) => dispatch(LoadPost(id)),
+  deletePost: (id) => () => dispatch(deletePost(id))
 });
 
 

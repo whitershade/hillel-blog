@@ -1,3 +1,4 @@
+import { omit } from 'lodash';
 import * as types from '../Constants/Posts';
 
 const initialState = {
@@ -13,6 +14,7 @@ export default function (state = initialState, { type, payload }) {
       }
 
     case types.ADD_ITEM:
+    case types.UPDATE_ITEM:
       return {
         ...state,
         data: {
@@ -20,6 +22,12 @@ export default function (state = initialState, { type, payload }) {
           [payload._id]: payload
         }
       }
+
+    case types.REMOVE_ITEM:
+      return {
+        ...state,
+        data: omit(state.data, payload),
+      };
 
     default:
       return state;
