@@ -1,0 +1,7 @@
+export const START_ADD_ITEMS = '@POSTS/START_ADD_ITEMS';
+export const ADD_ITEMS = '@POSTS/ADD_ITEMS';
+export const ADD_ITEMS_ERROR = '@POSTS/ADD_ITEMS_ERROR';
+
+export const START_ADD_ITEM = '@POSTS/START_ADD_ITEM';
+export const ADD_ITEM = '@POSTS/ADD_ITEM';
+export const ADD_ITEM_ERROR = '@POSTS/ADD_ITEM_ERROR';

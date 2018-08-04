@@ -1,0 +1,9 @@
+.post {
+  display: block;
+  border: 1px solid white;
+  margin-bottom: 10px;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  padding: 10px;
+}
