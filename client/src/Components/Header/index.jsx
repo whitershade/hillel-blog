@@ -15,11 +15,11 @@ const Header = ({ logout, isAuthenticated }) => (
   <header className="header">
     <div className="container">
       <nav className="header__nav">
-        <Li to='/profile'>Profile</Li>
         <Li to='/posts'>Posts</Li>
         <ul className="header__ul">
             { isAuthenticated ? (
               <React.Fragment>
+                <Li to='/profile'>Profile</Li>
                 <Li onClick={ logout }>logout</Li>
               </React.Fragment>
             ) : (

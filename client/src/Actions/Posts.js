@@ -78,3 +78,20 @@ export const deleteItem = id => async dispatch => {
     dispatch(handleError(e));
   }
 }
+
+export const patchItem = (id, attributes) => async dispatch => {
+  try {
+    const { data: post } = await axios.patch(`/api/posts/${ id }`, attributes);
+
+    dispatch(updateItem(post));
+    dispatch(push('/posts'));
+
+    dispatch(Notifications.success({
+      title: 'Success',
+      message: 'Post was updated'
+    }));
+
+  } catch (e) {
+    dispatch(handleError(e));
+  }
+}

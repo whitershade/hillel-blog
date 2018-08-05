@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { map } from 'lodash';
+import { Link } from 'react-router-dom';
 import ReactHtmlParser from 'react-html-parser';
 import PageWrapper from '../../Decorators/PageWrapper';
 import PageHeader from '../../Components/PageHeader';
@@ -17,9 +18,16 @@ class Post extends Component {
       <div className="page">
         <PageHeader>{ title }</PageHeader>
 
-        <p>{ ReactHtmlParser(text) }</p>
+        <div>{ ReactHtmlParser(text) }</div>
 
-        { canEdit ? <button onClick={ deletePost(_id) }>Delete Post</button> : null }
+        {
+          canEdit ? (
+            <React.Fragment>
+              <button onClick={ deletePost(_id) }>Delete Post</button>
+              <Link to={ `/posts/${ _id }/edit` }>Edit Post</Link>
+            </React.Fragment>
+          ) : null
+        }
       </div>
     );
   }

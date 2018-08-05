@@ -4,7 +4,7 @@ import './styles.css';
 
 const Footer = () => (
   <footer className="footer">
-    Юра, ты развернул проект? C:
+    whitershade
   </footer>
 );
 

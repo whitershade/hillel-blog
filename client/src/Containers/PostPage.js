@@ -9,7 +9,7 @@ import {
 const mapStateToProps = (state, props) => {
   const post = state.posts.data[props.match.params.id];
   const currentUserId = state.user.profile._id;
-  const canEdit = post && post.addedBy === currentUserId;
+  const canEdit = post && post.addedBy._id === currentUserId;
 
   return {
     canEdit,

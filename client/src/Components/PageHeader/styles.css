@@ -1,5 +1,5 @@
 .page-header {
-  color: #f0672e;
+  color: #A39BA8;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,7 +8,7 @@
 }
 
 .page-header a {
-  color: #fff;
+  color: #A39BA8;
   font-size: 14px;
   text-decoration: none;
 }

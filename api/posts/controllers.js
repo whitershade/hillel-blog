@@ -5,21 +5,32 @@ const Model = require('./model');
 const controllers = {
   getItems: (req, res) => {
     Model
-      .find({})
-      .then((posts) => {
+      .find()
+      .populate({
+        path: 'addedBy',
+        select: 'email',
+      })
+      .exec((err, posts) => {
+        if (err) return res.status(400).send(err);
+
         res.send(keyBy(posts, '_id'));
       })
-      .catch((e) => {
-        res.status(400).send(e);
-      });
   },
 
   getItem: (req, res) => {
     Model
       .findOne({ _id: req.params.id })
       .then((post) => {
-        if (!post) return res.status(404).send();
+        if (!post) res.status(404).send();
 
+        return post
+          .populate({
+            path: 'addedBy',
+            select: 'email',
+          })
+          .execPopulate()
+      })
+      .then((post) => {
         res.send(post);
       })
       .catch((e) => {
@@ -36,8 +47,16 @@ const controllers = {
 
     newItem
       .save()
+      .then((post) =>
+        post
+          .populate({
+            path: 'addedBy',
+            select: 'email',
+          })
+          .execPopulate()
+      )
       .then((post) => {
-        res.send({ post });
+        res.send(post);
       })
       .catch((e) => {
         res.status(400).send(e);
@@ -45,7 +64,6 @@ const controllers = {
   },
 
   updateItem: (req, res) => {
-    console.log('bum');
     const body = pick(req.body, ['title', 'text']);
 
     Model
@@ -58,8 +76,16 @@ const controllers = {
         { new: true },
       )
       .then((post) => {
-        if (!post) return res.status(404).send();
+        if (!post) res.status(404).send();
 
+        return post
+          .populate({
+            path: 'addedBy',
+            select: 'email',
+          })
+          .execPopulate()
+      })
+      .then((post) => {
         res.send(post);
       })
       .catch((e) => {

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import PageWrapper from '../../Decorators/PageWrapper';
 import PageHeader from '../../Components/PageHeader';
 import Post from './Post';
+import './styles.css';
 
 
 class Posts extends Component {
@@ -12,12 +13,20 @@ class Posts extends Component {
   }
 
   render() {
-    const { posts = [] } = this.props;
+    const { posts = [], currentUserId, deletePost } = this.props;
 
     return (
       <div className="page">
         <PageHeader>Posts <Link to='/posts/new'>Create new Post</Link></PageHeader>
-        { map(posts, (post, index) => <Post key={ index } { ...post }/>) }
+        <div className="posts">
+          { map(posts, (post, index) =>
+            <Post
+              key={ index }
+              { ...post }
+              deletePost={ deletePost }
+              canEdit={ post.addedBy._id === currentUserId }
+              />) }
+        </div>
       </div>
     );
   }

@@ -1,14 +1,19 @@
 import { connect } from 'react-redux';
-import { loadItems as loadPosts } from '../Actions/Posts';
 import Component from '../Pages/Posts';
+import {
+  loadItems as loadPosts,
+  deleteItem as deletePost
+} from '../Actions/Posts';
 
 
 const mapStateToProps = state => ({
-  posts: state.posts.data
+  posts: state.posts.data,
+  currentUserId: state.user.profile._id
 })
 
 const mapDispatchToProps = dispatch => ({
-  loadData: () => dispatch(loadPosts())
+  loadData: () => dispatch(loadPosts()),
+  deletePost: (id) => () => dispatch(deletePost(id))
 });
 
 
