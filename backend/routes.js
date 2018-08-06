@@ -40,6 +40,7 @@ module.exports = (app) => {
   app.use(express.urlencoded({ extended: false }));
 
   app.use('/api', api);
+  app.use(express.static('frontend/build'));
 
   app.use((err, req, res, next) => {
     console.error('SOME ERR', err);
