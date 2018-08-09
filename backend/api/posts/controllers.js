@@ -28,6 +28,13 @@ const controllers = {
             path: 'addedBy',
             select: 'email',
           })
+          .populate({
+            path: 'comments',
+            populate: {
+              path: 'addedBy',
+              select: 'email'
+            }
+          })
           .execPopulate()
       })
       .then((post) => {

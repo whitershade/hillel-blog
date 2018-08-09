@@ -1,0 +1,3 @@
+export const START_ADD_ITEM = '@COMMENTS/START_ADD_ITEM';
+export const ADD_ITEM = '@COMMENTS/ADD_ITEM';
+export const ADD_ITEM_ERROR = '@COMMENTS/ADD_ITEM_ERROR';

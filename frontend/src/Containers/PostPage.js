@@ -14,6 +14,7 @@ const mapStateToProps = (state, props) => {
   return {
     canEdit,
     id: props.match.params.id,
+    isAuthenticated: state.user.isAuthenticated,
     post: state.posts.data[props.match.params.id]
   };
 }
