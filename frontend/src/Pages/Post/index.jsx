@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 import { Link } from 'react-router-dom';
 import ReactHtmlParser from 'react-html-parser';
+import CommentsBlock from './CommentsBlock';
 import PageWrapper from '../../Decorators/PageWrapper';
 import PageHeader from '../../Components/PageHeader';
-import CommentsBlock from './CommentsBlock';
+import CreatedAt from '../../Components/CreatedAt';
 
 
 class Post extends Component {
@@ -12,11 +14,23 @@ class Post extends Component {
   }
 
   render() {
-    const { post: { _id, title, text, comments } = {}, deletePost, canEdit, isAuthenticated } = this.props;
+    const {
+      post: {
+        _id,
+        title,
+        text,
+        comments,
+        createdAt
+      } = {},
+      deletePost,
+      canEdit,
+      isAuthenticated
+    } = this.props;
 
     return (
       <div className="page">
         <PageHeader>{ title }</PageHeader>
+        <CreatedAt createdAt={ createdAt } />
 
         <div>{ ReactHtmlParser(text) }</div>
 
