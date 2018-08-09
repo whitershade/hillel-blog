@@ -40,10 +40,14 @@ module.exports = (app) => {
   app.use(express.urlencoded({ extended: false }));
 
   app.use('/api', api);
-  app.use(express.static('frontend/build'));
 
   app.use((err, req, res, next) => {
     console.error('SOME ERR', err);
     res.status(400).send({ message: err && err.message ? err.message : err });
+  });
+
+  app.use(express.static('frontend/build'));
+  app.get('/*', (req, res) => {
+    res.sendFile(__dirname + '/frontend/build');
   });
 };
