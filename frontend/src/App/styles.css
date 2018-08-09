@@ -45,6 +45,10 @@ body {
   padding: 20px 0;
 }
 
+.page img {
+  max-width: 100%;
+}
+
 .form {
   width: 100%;
   max-width: 300px;

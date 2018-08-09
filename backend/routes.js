@@ -1,5 +1,7 @@
 const api = require('./api');
 const express = require('express');
+const path = require('path');
+const rootPath = require('app-root-path').path;
 const expressSession = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(expressSession);
 const passport = require('passport');
@@ -47,6 +49,7 @@ module.exports = (app) => {
   });
 
   app.use(express.static('frontend/build'));
+  app.use(express.static(path.join(rootPath, '..', 'tmp')));
   app.get('/*', (req, res) => {
     res.sendFile(__dirname + '/frontend/build');
   });

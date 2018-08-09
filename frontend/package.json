@@ -5,6 +5,9 @@
   "proxy": {
     "/api/*": {
       "target": "http://[::1]:5000"
+    },
+    "/images/*": {
+      "target": "http://[::1]:5000"
     }
   },
   "dependencies": {
@@ -15,6 +18,7 @@
     "moment": "^2.22.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-dropzone": "^4.3.0",
     "react-final-form": "^3.6.5",
     "react-html-parser": "^2.0.2",
     "react-notification-system-redux": "^1.2.0",

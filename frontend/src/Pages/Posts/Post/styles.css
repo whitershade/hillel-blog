@@ -12,6 +12,10 @@
   padding: 0;
 }
 
+.post img {
+  max-width: 100%;
+}
+
 .post-wrapper {
   position: relative;
   display: flex;

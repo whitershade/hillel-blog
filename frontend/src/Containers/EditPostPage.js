@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { patchItem as patchPost, loadItem as LoadPost } from '../Actions/Posts';
+import { createItem as createImage } from '../Actions/Images';
 import Component from '../Pages/NewPost';
 
 
@@ -18,7 +19,8 @@ const mergeProps = (props, { dispatch }, ownProps) => {
     ...props,
     ...ownProps,
     loadData: () => dispatch(LoadPost(ownProps.match.params.id)),
-    onSubmit: values => dispatch(patchPost(ownProps.match.params.id, values)),
+    onPostFormSubmit: values => dispatch(patchPost(ownProps.match.params.id, values)),
+    createImage: values => dispatch(createImage(values))
   }
 }
 

@@ -1,10 +1,12 @@
 import { connect } from 'react-redux';
 import { createItem as createPost } from '../Actions/Posts';
+import { createItem as createImage } from '../Actions/Images';
 import Component from '../Pages/NewPost';
 
 
 const mapDispatchToProps = dispatch => ({
-  onSubmit: values => dispatch(createPost(values)),
+  onPostFormSubmit: values => dispatch(createPost(values)),
+  createImage: values => dispatch(createImage(values))
 });
 
 

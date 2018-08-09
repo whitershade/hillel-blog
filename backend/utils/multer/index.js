@@ -9,7 +9,7 @@ const allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const destinationPath = path.join(rootPath, 'uploads', req.user._id.toString());
+    const destinationPath = path.join(rootPath, '..', 'tmp', 'images', req.user._id.toString());
 
     if (!fs.existsSync(destinationPath)) fs.mkdirSync(destinationPath);
 
