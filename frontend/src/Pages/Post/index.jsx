@@ -5,7 +5,7 @@ import ReactHtmlParser from 'react-html-parser';
 import CommentsBlock from './CommentsBlock';
 import PageWrapper from '../../Decorators/PageWrapper';
 import PageHeader from '../../Components/PageHeader';
-import CreatedAt from '../../Components/CreatedAt';
+import PostInformation from '../../Components/PostInformation';
 
 
 class Post extends Component {
@@ -20,7 +20,8 @@ class Post extends Component {
         title,
         text,
         comments,
-        createdAt
+        createdAt,
+        addedBy
       } = {},
       deletePost,
       canEdit,
@@ -30,7 +31,7 @@ class Post extends Component {
     return (
       <div className="page">
         <PageHeader>{ title }</PageHeader>
-        <CreatedAt createdAt={ createdAt } />
+        <PostInformation createdAt={ createdAt } addedBy={ addedBy } />
 
         <div>{ ReactHtmlParser(text) }</div>
 

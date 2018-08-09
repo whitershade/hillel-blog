@@ -27,6 +27,11 @@ const RegisterPage = ({ onSubmit }) => (
             )}
           </Field>
 
+          <div>
+            <label>Name</label>
+            <Field name="name" component="input" />
+          </div>
+
           <button type="submit" disabled={pristine || invalid}>
             Submit
           </button>

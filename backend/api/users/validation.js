@@ -16,6 +16,8 @@ module.exports = {
         .min(5)
         .max(100)
         .required(),
+      name: Joi
+        .string()
     },
   },
 };

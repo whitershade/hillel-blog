@@ -1,0 +1,20 @@
+.post-infomation {
+  font-size: 12px;
+}
+
+.post-infomation .created-at {
+  margin-top: 0;
+  margin-bottom: 0;
+
+  font-style: italic;
+}
+
+.post-infomation .added-by {
+  margin-top: 0;
+
+  font-style: italic;
+}
+
+.post-infomation .name {
+  font-size: 14px;
+}

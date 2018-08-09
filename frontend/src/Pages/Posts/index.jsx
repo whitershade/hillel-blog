@@ -17,7 +17,9 @@ class Posts extends Component {
 
     return (
       <div className="page">
-        <PageHeader>Posts <Link to='/posts/new'>Create new Post</Link></PageHeader>
+        <PageHeader>
+          Posts <Link to='/posts/new'>Create new Post</Link>
+        </PageHeader>
         <div className="posts">
           { map(posts, (post, index) =>
             <Post

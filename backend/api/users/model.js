@@ -15,6 +15,9 @@ const UsersSchema = new mongoose.Schema({
     required: true,
     select: false,
   },
+  name: {
+    type: String
+  }
 }, {
   timestamps: true,
   collection: 'UsersCollection',

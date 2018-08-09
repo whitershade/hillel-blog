@@ -8,7 +8,7 @@ const controllers = {
       .find()
       .populate({
         path: 'addedBy',
-        select: 'email',
+        select: 'email name',
       })
       .exec((err, posts) => {
         if (err) return res.status(400).send(err);
@@ -26,13 +26,13 @@ const controllers = {
         return post
           .populate({
             path: 'addedBy',
-            select: 'email',
+            select: 'email name',
           })
           .populate({
             path: 'comments',
             populate: {
               path: 'addedBy',
-              select: 'email'
+              select: 'email name'
             }
           })
           .execPopulate()
@@ -58,7 +58,7 @@ const controllers = {
         post
           .populate({
             path: 'addedBy',
-            select: 'email',
+            select: 'email name',
           })
           .execPopulate()
       )
@@ -88,7 +88,7 @@ const controllers = {
         return post
           .populate({
             path: 'addedBy',
-            select: 'email',
+            select: 'email name',
           })
           .execPopulate()
       })
