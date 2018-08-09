@@ -1,11 +1,13 @@
-const { pick, keyBy } = require('lodash');
+const { pick, keyBy, map } = require('lodash');
 const Model = require('./model');
+const stringSizeLimiter = require('../../utils/stringSizeLimiter');
 
 
 const controllers = {
   getItems: (req, res) => {
     Model
       .find()
+      .lean()
       .populate({
         path: 'addedBy',
         select: 'email name',
@@ -13,7 +15,11 @@ const controllers = {
       .exec((err, posts) => {
         if (err) return res.status(400).send(err);
 
-        res.send(keyBy(posts, '_id'));
+        const postsLimitedByTextLength = map(posts, ({ text, ...postAttributes }) => {
+          return { text: stringSizeLimiter(text, 300), ...postAttributes };
+        })
+
+        res.send(keyBy(postsLimitedByTextLength, '_id'));
       })
   },
 

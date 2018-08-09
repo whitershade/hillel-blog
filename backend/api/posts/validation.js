@@ -5,6 +5,7 @@ module.exports = {
     body: {
       title: Joi
         .string()
+        .max(100)
         .required(),
       text: Joi
         .string()
