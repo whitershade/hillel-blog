@@ -48,9 +48,9 @@ module.exports = (app) => {
     res.status(400).send({ message: err && err.message ? err.message : err });
   });
 
-  app.use(express.static('frontend/build'));
+  app.use(express.static(path.join(rootPath, '..', 'frontend', 'build')));
   app.use(express.static(path.join(rootPath, '..', 'tmp')));
   app.get('/*', (req, res) => {
-    res.sendFile(__dirname + '/frontend/build');
+    res.sendFile(path.join(rootPath, '..', 'frontend', 'build'));
   });
 };
