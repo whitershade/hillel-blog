@@ -19,11 +19,13 @@ const Post = ({
   <div className="post-wrapper">
     <Link className="post" to={`/posts/${_id}`}>
       <PostInformation createdAt={createdAt} addedBy={addedBy} />
-      <h2>
-        { title }
-      </h2>
-      <div>
-        { ReactHtmlParser(text) }
+      <div className="post-body">
+        <h2>
+          { title }
+        </h2>
+        <div>
+          { ReactHtmlParser(text) }
+        </div>
       </div>
     </Link>
 

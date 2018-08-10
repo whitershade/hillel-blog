@@ -14,22 +14,19 @@ class CommentForm extends Component {
           <form onSubmit={handleSubmit} className="form">
             <Field name="text">
               {({ input, meta }) => (
-                <div>
-                  <label>
-                    Text
-                  </label>
-                  <textarea {...input} />
+                <React.Fragment>
+                  <input type="text" {...input} placeholder="Comment text" />
                   {meta.touched && meta.error && (
                   <span>
                     {meta.error}
                   </span>
                   )}
-                </div>
+                </React.Fragment>
               )}
             </Field>
 
             <button type="submit" disabled={pristine || invalid}>
-              Submit
+              Add comment
             </button>
           </form>
         )}

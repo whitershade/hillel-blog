@@ -17,7 +17,7 @@ const controllers = {
 				comment
 					.populate({
 						path: 'addedBy',
-						select: 'email'
+						select: 'email name'
 					})
 					.execPopulate())
 			.then((comment) => Post.findOne({ _id: comment.relatedPost })

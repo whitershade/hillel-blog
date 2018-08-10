@@ -1,0 +1,13 @@
+.comments-block .form {
+  margin-bottom: 10px;
+}
+
+.comments-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.no-comments {
+  text-align: center;
+}

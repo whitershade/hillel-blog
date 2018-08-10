@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Comments from './Comments';
 import NewComment from '../../../Containers/NewComment';
+import './styles.css';
 
 class CommentsBlock extends Component {
   render() {
@@ -8,13 +9,13 @@ class CommentsBlock extends Component {
 
     return (
       <div className="comments-block">
-        <h3>
+        <h3 className="comments-title">
           Comments
         </h3>
         { isAuthenticated ? (
           <NewComment postId={postId} />
         ) : (
-          <div>
+          <div className="login-to-leave-comments">
             Please, login to leave comments
           </div>
         ) }

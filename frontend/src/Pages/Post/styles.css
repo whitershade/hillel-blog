@@ -1,0 +1,25 @@
+.post-header {
+  position: relative;
+}
+
+.page__post .post-body {
+  border-bottom: 1px solid #B8C5D6;
+}
+
+.page__post .form {
+  display: flex;
+  max-width: 100%;
+}
+
+.page__post .form button {
+  width: auto;
+  margin-top: 0;
+  flex-grow: 1;
+}
+
+.page__post .form input {
+  width: auto;
+  margin-bottom: 0;
+  margin-right: 10px;
+  flex-grow: 2;
+}

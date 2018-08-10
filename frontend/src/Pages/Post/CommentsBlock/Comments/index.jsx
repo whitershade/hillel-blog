@@ -1,16 +1,23 @@
 import React from 'react';
 import { isEmpty } from 'lodash';
+import './styles.css';
 
 const Comments = ({ comments }) => (
   <div className="comments">
     { isEmpty(comments) ? (
-      <div>
+      <div className="no-comments">
         No comments yet
       </div>
     ) : (
-      <ul>
-        { comments.map(({ _id, addedBy, text }) => (
+      <ul className="comments-list">
+        { comments.map(({ _id, addedBy: { name, email } = {}, text } = {}) => (
           <li key={_id}>
+            <b>
+              { name || email }
+            </b>
+            {' '}
+            says:
+            {' '}
             { text }
           </li>
         )) }
@@ -18,5 +25,6 @@ const Comments = ({ comments }) => (
     )}
   </div>
 );
+
 
 export default Comments;

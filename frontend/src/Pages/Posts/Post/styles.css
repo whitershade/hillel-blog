@@ -1,7 +1,6 @@
 .post {
   border: 1px solid #B8C5D6;
   border-radius: 5px;
-  padding: 10px;
   color: #1D2121;
   text-decoration: none;
   flex-grow: 1;
@@ -19,6 +18,10 @@
 .post-wrapper {
   position: relative;
   display: flex;
+}
+
+.post-body {
+  padding: 10px;
 }
 
 .post-actions {

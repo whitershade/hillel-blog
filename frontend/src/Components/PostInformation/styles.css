@@ -1,5 +1,8 @@
 .post-infomation {
   font-size: 12px;
+  padding: 10px;
+
+  border-bottom: 1px solid #B8C5D6;
 }
 
 .post-infomation .created-at {
@@ -11,10 +14,15 @@
 
 .post-infomation .added-by {
   margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
 
   font-style: italic;
 }
 
 .post-infomation .name {
   font-size: 14px;
+
+  margin-bottom: 0;
+  padding-bottom: 0;
 }

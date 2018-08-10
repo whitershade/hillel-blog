@@ -95,12 +95,19 @@ body {
   outline: 2px solid #23ce6b;
 }
 
+.button__delete-post:hover,
+.button__edit-post:hover {
+  cursor: pointer;
+}
+
 .button__delete-post + .button__edit-post {
   margin-left: 5px;
 }
 
 .form button {
   margin-top: 20px;
+  background-color: #B8C5D6;
+  color: #fff;
 }
 
 .form input {
