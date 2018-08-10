@@ -12,6 +12,7 @@ const Post = ({
   text,
   createdAt,
   addedBy,
+  editable,
   canEdit,
   deletePost
 }) => (
@@ -25,7 +26,7 @@ const Post = ({
     { canEdit ? (
       <div className="post-actions">
         <button onClick={ deletePost(_id) }>delete</button>
-        <Link to={ `/posts/${ _id }/edit` }>edit</Link>
+        { editable ? <Link to={ `/posts/${ _id }/edit` }>edit</Link> : null }
       </div>
     ) : null }
   </div>

@@ -14,8 +14,7 @@ const PostSchema = new mongoose.Schema({
     required: true,
     type: mongoose.Schema.Types.ObjectId,
   },
-  show: { type: Boolean, default: true },
-  tags: [{type: String}],
+  editable: { type: Boolean, default: true },
   comments: [{
     ref: 'CommentModel',
     type: mongoose.Schema.Types.ObjectId

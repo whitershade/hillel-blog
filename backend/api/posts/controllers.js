@@ -84,6 +84,7 @@ const controllers = {
         {
           _id: req.params.id,
           addedBy: req.user._id,
+          editable: true
         },
         { $set: body },
         { new: true },

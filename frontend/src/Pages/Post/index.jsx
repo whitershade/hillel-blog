@@ -21,7 +21,8 @@ class Post extends Component {
         text,
         comments,
         createdAt,
-        addedBy
+        addedBy,
+        editable
       } = {},
       deletePost,
       canEdit,
@@ -39,7 +40,7 @@ class Post extends Component {
           canEdit ? (
             <React.Fragment>
               <button onClick={ deletePost(_id) }>Delete Post</button>
-              <Link to={ `/posts/${ _id }/edit` }>Edit Post</Link>
+              { editable ? <Link to={ `/posts/${ _id }/edit` }>Edit Post</Link> : null }
             </React.Fragment>
           ) : null
         }
