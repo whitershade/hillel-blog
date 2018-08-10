@@ -51,6 +51,6 @@ module.exports = (app) => {
   app.use(express.static(path.join(rootPath, '..', 'frontend', 'build')));
   app.use(express.static(path.join(rootPath, '..', 'tmp')));
   app.get('/*', (req, res) => {
-    res.sendFile(path.join(rootPath, '..', 'frontend', 'build'));
+    res.sendFile(path.join(rootPath, '..', 'frontend', 'build', 'index.html'));
   });
 };
