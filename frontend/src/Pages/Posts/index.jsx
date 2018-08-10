@@ -14,7 +14,6 @@ class Posts extends Component {
   }
 
   render() {
-    console.log(this.props.isLoading);
     if(this.props.isLoading) return <Loading />;
 
     const { posts = [], currentUserId, deletePost } = this.props;

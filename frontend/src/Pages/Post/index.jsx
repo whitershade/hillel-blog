@@ -39,8 +39,14 @@ class Post extends Component {
         {
           canEdit ? (
             <React.Fragment>
-              <button onClick={ deletePost(_id) }>Delete Post</button>
-              { editable ? <Link to={ `/posts/${ _id }/edit` }>Edit Post</Link> : null }
+              <button className='button__delete-post' onClick={ deletePost(_id) }>
+                Delete Post
+              </button>
+              { editable ? (
+                <Link className='button__edit-post' to={ `/posts/${ _id }/edit` }>
+                  Edit Post
+                </Link>
+              ) : null }
             </React.Fragment>
           ) : null
         }

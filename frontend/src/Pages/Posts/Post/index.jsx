@@ -25,8 +25,14 @@ const Post = ({
 
     { canEdit ? (
       <div className="post-actions">
-        <button onClick={ deletePost(_id) }>delete</button>
-        { editable ? <Link to={ `/posts/${ _id }/edit` }>edit</Link> : null }
+        <button className='button__delete-post' onClick={ deletePost(_id) }>
+          Delete Post
+        </button>
+        { editable ? (
+          <Link className='button__edit-post' to={ `/posts/${ _id }/edit` }>
+            Edit Post
+          </Link>
+        ) : null }
       </div>
     ) : null }
   </div>

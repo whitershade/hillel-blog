@@ -73,6 +73,32 @@ body {
   }
 }
 
+.button__delete-post,
+.button__edit-post {
+  display: inline-flex;
+  text-decoration: none;
+  padding: 2px;
+  border-radius: 3px;
+  margin: 0;
+  box-sizing: border-box;
+  line-height: 1;
+
+  color: #1D2121;
+  border: 1px solid #1D2121;
+  background-color: transparent;
+
+  font-size: 11px;
+}
+
+.button__delete-post:focus,
+.button__edit-post:focus {
+  outline: 2px solid #23ce6b;
+}
+
+.button__delete-post + .button__edit-post {
+  margin-left: 5px;
+}
+
 .form button {
   margin-top: 20px;
 }
