@@ -3,6 +3,7 @@ import { map } from 'lodash';
 import { Link } from 'react-router-dom';
 import PageWrapper from '../../Decorators/PageWrapper';
 import PageHeader from '../../Components/PageHeader';
+import Loading from '../../Components/Loading';
 import Post from './Post';
 import './styles.css';
 
@@ -13,6 +14,9 @@ class Posts extends Component {
   }
 
   render() {
+    console.log(this.props.isLoading);
+    if(this.props.isLoading) return <Loading />;
+
     const { posts = [], currentUserId, deletePost } = this.props;
 
     return (

@@ -1,0 +1,20 @@
+.loader-component {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.loader {
+    border: 5px solid #B8C5D6;
+    animation: spin 1s ease infinite;
+    border-top: 5px solid #555;
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

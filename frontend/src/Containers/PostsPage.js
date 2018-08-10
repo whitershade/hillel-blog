@@ -8,6 +8,7 @@ import {
 
 const mapStateToProps = state => ({
   posts: state.posts.data,
+  isLoading: state.posts.isLoading,
   currentUserId: state.user.profile._id
 })
 

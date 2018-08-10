@@ -5,10 +5,9 @@ import Notifications from 'react-notification-system-redux';
 import { handleError } from './Errors';
 import * as types from '../Constants/Posts';
 
-
-export const startAddItems = createAction(types.START_ADD_ITEMS);
+export const startLoadItems = createAction(types.START_LOAD_ITEMS);
 export const addItems = createAction(types.ADD_ITEMS);
-export const addItemsError = createAction(types.ADD_ITEMS_ERROR);
+export const loadtemsError = createAction(types.LOAD_ITEMS_ERROR);
 
 export const startAddItem = createAction(types.START_ADD_ITEM);
 export const addItem = createAction(types.ADD_ITEM);
@@ -33,6 +32,8 @@ export const loadItem = id => async dispatch => {
 }
 
 export const loadItems = () => async dispatch => {
+  dispatch(startLoadItems());
+
   try {
     const { data: posts } = await axios.get('/api/posts');
 
