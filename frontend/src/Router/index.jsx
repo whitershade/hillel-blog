@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 import { history } from '../Store';
@@ -12,17 +12,21 @@ import NewPostPage from '../Containers/NewPostPage';
 import EditPostPage from '../Containers/EditPostPage';
 
 
-const NoMatch = () => <div>404</div>;
+const NoMatch = () => (
+  <div>
+    404
+  </div>
+);
 
 const AppRouter = () => (
   <ConnectedRouter history={history}>
     <Switch>
       <Route exact path="/" component={PostsPage} />
-      <PrivateRoute path='/profile' component={EditProfile} />
+      <PrivateRoute path="/profile" component={EditProfile} />
       <Route path="/register" component={RegisterPage} />
       <Route path="/login" component={LoginPage} />
-      <Route path="/posts/new" component={ NewPostPage } />
-      <Route path="/posts/:id/edit" component={ EditPostPage } />
+      <Route path="/posts/new" component={NewPostPage} />
+      <Route path="/posts/:id/edit" component={EditPostPage} />
       <Route path="/posts/:id/" component={PostPage} />
       <Route path="/posts/" component={PostsPage} />
       <Route component={NoMatch} />

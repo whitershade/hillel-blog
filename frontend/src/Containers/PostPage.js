@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Component from '../Pages/Post';
 import {
   loadItem as LoadPost,
-  deleteItem as deletePost
+  deleteItem as deletePost,
 } from '../Actions/Posts';
 
 
@@ -15,13 +15,13 @@ const mapStateToProps = (state, props) => {
     canEdit,
     id: props.match.params.id,
     isAuthenticated: state.user.isAuthenticated,
-    post: state.posts.data[props.match.params.id]
+    post: state.posts.data[props.match.params.id],
   };
-}
+};
 
 const mapDispatchToProps = dispatch => ({
-  loadData: (id) => dispatch(LoadPost(id)),
-  deletePost: (id) => () => dispatch(deletePost(id))
+  loadData: id => dispatch(LoadPost(id)),
+  deletePost: id => () => dispatch(deletePost(id)),
 });
 
 

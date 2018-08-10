@@ -3,9 +3,9 @@ import { getProfile } from '../Actions/Users';
 import Component from '../App/App';
 
 
-const mapStateToProps = (state) => ({
-  notifications: state.notifications
-})
+const mapStateToProps = state => ({
+  notifications: state.notifications,
+});
 
 const mapDispatchToProps = dispatch => ({
   getProfile: values => dispatch(getProfile(values)),

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { isEmpty } from 'lodash';
-import { Form, Field } from "react-final-form";
+import { Form, Field } from 'react-final-form';
 
 class CommentForm extends Component {
   render() {
@@ -9,15 +9,21 @@ class CommentForm extends Component {
     return (
       <Form
         onSubmit={onSubmit}
-        initialValues={ initialValues }
+        initialValues={initialValues}
         render={({ handleSubmit, pristine, invalid }) => (
           <form onSubmit={handleSubmit} className="form">
             <Field name="text">
               {({ input, meta }) => (
                 <div>
-                  <label>Text</label>
+                  <label>
+                    Text
+                  </label>
                   <textarea {...input} />
-                  {meta.touched && meta.error && <span>{meta.error}</span>}
+                  {meta.touched && meta.error && (
+                  <span>
+                    {meta.error}
+                  </span>
+                  )}
                 </div>
               )}
             </Field>

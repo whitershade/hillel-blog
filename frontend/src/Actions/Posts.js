@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { push } from 'react-router-redux'
+import { push } from 'react-router-redux';
 import { createAction } from 'redux-actions';
 import Notifications from 'react-notification-system-redux';
 import { handleError } from './Errors';
@@ -21,17 +21,17 @@ export const startUpdateItem = createAction(types.START_UPDATE_ITEM);
 export const updateItem = createAction(types.UPDATE_ITEM);
 export const updateItemError = createAction(types.UPDATE_ITEM_ERROR);
 
-export const loadItem = id => async dispatch => {
+export const loadItem = id => async (dispatch) => {
   try {
-    const { data: post } = await axios.get(`/api/posts/${ id }`);
+    const { data: post } = await axios.get(`/api/posts/${id}`);
 
     dispatch(addItem(post));
   } catch (e) {
     dispatch(handleError(e));
   }
-}
+};
 
-export const loadItems = () => async dispatch => {
+export const loadItems = () => async (dispatch) => {
   dispatch(startLoadItems());
 
   try {
@@ -41,9 +41,9 @@ export const loadItems = () => async dispatch => {
   } catch (e) {
     dispatch(handleError(e));
   }
-}
+};
 
-export const createItem = values => async dispatch => {
+export const createItem = values => async (dispatch) => {
   try {
     const { data: post } = await axios.post('/api/posts', values);
 
@@ -53,46 +53,43 @@ export const createItem = values => async dispatch => {
 
     dispatch(Notifications.success({
       title: 'Success',
-      message: 'Post was created'
+      message: 'Post was created',
     }));
-
   } catch (e) {
     dispatch(handleError(e));
   }
 };
 
-export const deleteItem = id => async dispatch => {
+export const deleteItem = id => async (dispatch) => {
   if (!window.confirm('Are you sure?')) return;
 
   try {
-    const { data: postId } = await axios.delete(`/api/posts/${ id }`);
+    const { data: postId } = await axios.delete(`/api/posts/${id}`);
 
     dispatch(removeItem(postId));
     dispatch(push('/posts'));
 
     dispatch(Notifications.success({
       title: 'Success',
-      message: 'Post was deleted'
+      message: 'Post was deleted',
     }));
-
   } catch (e) {
     dispatch(handleError(e));
   }
-}
+};
 
-export const patchItem = (id, attributes) => async dispatch => {
+export const patchItem = (id, attributes) => async (dispatch) => {
   try {
-    const { data: post } = await axios.patch(`/api/posts/${ id }`, attributes);
+    const { data: post } = await axios.patch(`/api/posts/${id}`, attributes);
 
     dispatch(updateItem(post));
     dispatch(push('/posts'));
 
     dispatch(Notifications.success({
       title: 'Success',
-      message: 'Post was updated'
+      message: 'Post was updated',
     }));
-
   } catch (e) {
     dispatch(handleError(e));
   }
-}
+};

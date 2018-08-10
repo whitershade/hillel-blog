@@ -6,7 +6,7 @@ import Component from '../Pages/NewPost';
 
 const mapDispatchToProps = dispatch => ({
   onPostFormSubmit: values => dispatch(createPost(values)),
-  createImage: values => dispatch(createImage(values))
+  createImage: values => dispatch(createImage(values)),
 });
 
 

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { push } from 'react-router-redux'
+import { push } from 'react-router-redux';
 import { createAction } from 'redux-actions';
 import Notifications from 'react-notification-system-redux';
 import { handleError } from './Errors';
@@ -17,14 +17,15 @@ export const startUpdateItem = createAction(types.START_UPDATE_ITEM);
 export const updateItem = createAction(types.UPDATE_ITEM);
 export const updateItemError = createAction(types.UPDATE_ITEM_ERROR);
 
-export const createItem = values => async dispatch => {
+export const createItem = values => async (dispatch) => {
   try {
     await axios.post('/api/users', values);
 
     dispatch(push('/login'));
     dispatch(Notifications.success({
       title: 'Success, you have been registered',
-      message: 'now login please', position: 'tc'
+      message: 'now login please',
+      position: 'tc',
     }));
   } catch (e) {
     dispatch(handleError(e));
@@ -40,14 +41,15 @@ export const editItem = values => async (dispatch, getState) => {
 
     dispatch(Notifications.success({
       title: 'Success',
-      message: 'profile was updated', position: 'tc'
+      message: 'profile was updated',
+      position: 'tc',
     }));
   } catch (e) {
     dispatch(handleError(e));
   }
 };
 
-export const login = values => async dispatch => {
+export const login = values => async (dispatch) => {
   try {
     const { data: user } = await axios.post('/api/users/login', values);
 
@@ -60,7 +62,7 @@ export const login = values => async dispatch => {
   }
 };
 
-export const logout = values => async dispatch => {
+export const logout = values => async (dispatch) => {
   try {
     await axios.get('/api/users/logout');
 
@@ -69,7 +71,8 @@ export const logout = values => async dispatch => {
 
     dispatch(Notifications.success({
       title: 'Success',
-      message: 'you have been logged out', position: 'tc'
+      message: 'you have been logged out',
+      position: 'tc',
     }));
     dispatch(push('/'));
   } catch (e) {
@@ -77,7 +80,7 @@ export const logout = values => async dispatch => {
   }
 };
 
-export const getProfile = values => async dispatch => {
+export const getProfile = values => async (dispatch) => {
   try {
     const { data: user } = await axios.get('/api/users/');
 
@@ -86,4 +89,4 @@ export const getProfile = values => async dispatch => {
   } catch (e) {
     dispatch(handleError(e));
   }
-}
+};

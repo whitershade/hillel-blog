@@ -14,7 +14,7 @@ class App extends Component {
 
     return (
       <React.Fragment>
-        <Notifications notifications={ notifications } />
+        <Notifications notifications={notifications} />
         <Router />
       </React.Fragment>
     );

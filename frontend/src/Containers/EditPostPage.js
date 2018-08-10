@@ -9,20 +9,18 @@ const mapStateToProps = (state, props) => {
 
   return {
     initialValues: {
-      ...post
-    }
-  }
-}
+      ...post,
+    },
+  };
+};
 
-const mergeProps = (props, { dispatch }, ownProps) => {
-  return {
-    ...props,
-    ...ownProps,
-    loadData: () => dispatch(LoadPost(ownProps.match.params.id)),
-    onPostFormSubmit: values => dispatch(patchPost(ownProps.match.params.id, values)),
-    createImage: values => dispatch(createImage(values))
-  }
-}
+const mergeProps = (props, { dispatch }, ownProps) => ({
+  ...props,
+  ...ownProps,
+  loadData: () => dispatch(LoadPost(ownProps.match.params.id)),
+  onPostFormSubmit: values => dispatch(patchPost(ownProps.match.params.id, values)),
+  createImage: values => dispatch(createImage(values)),
+});
 
 
 export default connect(mapStateToProps, null, mergeProps)(Component);

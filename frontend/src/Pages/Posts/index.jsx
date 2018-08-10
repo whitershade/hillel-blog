@@ -14,28 +14,32 @@ class Posts extends Component {
   }
 
   render() {
-    if(this.props.isLoading) return <Loading />;
+    if (this.props.isLoading) return <Loading />;
 
     const { posts = [], currentUserId, deletePost } = this.props;
 
     return (
       <div className="page">
         <PageHeader>
-          Posts <Link to='/posts/new'>Create new Post</Link>
+          Posts
+          {' '}
+          <Link to="/posts/new">
+            Create new Post
+          </Link>
         </PageHeader>
         <div className="posts">
-          { map(posts, (post, index) =>
+          { map(posts, (post, index) => (
             <Post
-              key={ index }
-              { ...post }
-              deletePost={ deletePost }
-              canEdit={ post.addedBy._id === currentUserId }
-              />) }
+              key={index}
+              {...post}
+              deletePost={deletePost}
+              canEdit={post.addedBy._id === currentUserId}
+            />
+          )) }
         </div>
       </div>
     );
   }
-
 }
 
 export default PageWrapper(Posts);

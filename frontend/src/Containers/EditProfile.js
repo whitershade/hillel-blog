@@ -8,10 +8,10 @@ const mapStateToProps = (state, props) => {
 
   return {
     initialValues: {
-      ...user
-    }
-  }
-}
+      ...user,
+    },
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: values => dispatch(editProfile(values)),

@@ -13,7 +13,7 @@ const store = createStore(
   compose(
     applyMiddleware(thunk),
     applyMiddleware(routingMiddleware),
-    window.devToolsExtension ? window.devToolsExtension() : f => f
+    window.devToolsExtension ? window.devToolsExtension() : f => f,
   ),
 );
 
