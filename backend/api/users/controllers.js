@@ -3,7 +3,7 @@ const { model: UsersModel } = require('./model');
 
 
 const controllers = {
-  register: (req, res) => {
+  createItem: (req, res) => {
     UsersModel.create(req.body, (err) => {
       if (err) {
         if (err.code === 11000) {
@@ -16,8 +16,31 @@ const controllers = {
     });
   },
 
+  getItem: (req, res) => {
+    res.status(200).send(req.user);
+  },
+
+  patchItem: (req, res) => {
+    UsersModel
+      .findOneAndUpdate(
+        {
+          _id: req.user._id,
+        },
+        { $set: req.body },
+        { new: true },
+      )
+      .then((user) => {
+        if (!user) res.status(404).send();
+
+        res.send(user);
+      })
+      .catch((e) => {
+        res.status(400).send(e);
+      });
+  },
+
   login: (req, res) => {
-    res.status(200).send(pick(req.user, ['_id', 'email']));
+    res.status(200).send(pick(req.user, ['_id', 'email', 'name']));
   },
 
   logout: (req, res) => {
@@ -25,11 +48,7 @@ const controllers = {
     res.clearCookie('connect.sid');
     res.sendStatus(200);
   },
-
-  getMe: (req, res) => {
-    res.status(200).send(req.user);
-  }
 }
 
 
-module.exports = { ...controllers };
+module.exports = controllers;

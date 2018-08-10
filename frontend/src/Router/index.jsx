@@ -6,7 +6,7 @@ import PrivateRoute from '../Containers/PrivateRoute';
 import RegisterPage from '../Containers/RegisterPage';
 import LoginPage from '../Containers/LoginPage';
 import PostsPage from '../Containers/PostsPage';
-import ProfilePage from '../Containers/ProfilePage';
+import EditProfile from '../Containers/EditProfile';
 import PostPage from '../Containers/PostPage';
 import NewPostPage from '../Containers/NewPostPage';
 import EditPostPage from '../Containers/EditPostPage';
@@ -18,7 +18,7 @@ const AppRouter = () => (
   <ConnectedRouter history={history}>
     <Switch>
       <Route exact path="/" component={PostsPage} />
-      <PrivateRoute path='/profile' component={ProfilePage} />
+      <PrivateRoute path='/profile' component={EditProfile} />
       <Route path="/register" component={RegisterPage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/posts/new" component={ NewPostPage } />

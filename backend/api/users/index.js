@@ -10,9 +10,9 @@ const router = Router();
 
 router
   .get(
-    '/me',
+    '/',
     middlewares.isAuth,
-    controllers.getMe
+    controllers.getItem
   )
   .get(
     '/logout',
@@ -21,8 +21,13 @@ router
   )
   .post(
     '/',
-    middlewares.validate(validation.register),
-    controllers.register
+    middlewares.validate(validation.createItem),
+    controllers.createItem
+  )
+  .patch(
+    '/',
+    middlewares.validate(validation.patchItem),
+    controllers.patchItem
   )
   .post(
     '/login',

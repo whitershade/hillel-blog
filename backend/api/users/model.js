@@ -51,7 +51,7 @@ UsersSchema.statics = {
   deserializeUser(id, next) {
     this
       .findById(id)
-      .select('email')
+      .select('email name')
       .lean()
       .exec((err, user) => {
         if (err) return next({ message: err.message });

@@ -10,7 +10,7 @@ const PrivateRoute = ({ isAuthenticated, component: Component, ...rest }) => (
           pathname: '/login',
           state: { from: props.location }
         }} />
-  )} />
+  ) } />
 )
 
 

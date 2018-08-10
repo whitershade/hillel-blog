@@ -9,6 +9,7 @@ const initialState = {
 export default function (state = initialState, { type, payload }) {
   switch (type) {
     case types.ADD_ITEM:
+    case types.UPDATE_ITEM:
       return { ...state, profile: payload }
 
     case types.AUTHENTICATE_USER:

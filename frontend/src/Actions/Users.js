@@ -13,6 +13,9 @@ export const startAddItem = createAction(types.START_ADD_ITEM);
 export const addItem = createAction(types.ADD_ITEM);
 export const addItemError = createAction(types.ADD_ITEM_ERROR);
 
+export const startUpdateItem = createAction(types.START_UPDATE_ITEM);
+export const updateItem = createAction(types.UPDATE_ITEM);
+export const updateItemError = createAction(types.UPDATE_ITEM_ERROR);
 
 export const createItem = values => async dispatch => {
   try {
@@ -22,6 +25,22 @@ export const createItem = values => async dispatch => {
     dispatch(Notifications.success({
       title: 'Success, you have been registered',
       message: 'now login please', position: 'tc'
+    }));
+  } catch (e) {
+    dispatch(handleError(e));
+  }
+};
+
+export const editItem = values => async (dispatch, getState) => {
+  try {
+    const { data: user } = await axios.patch('/api/users', values);
+
+    dispatch(updateItem(user));
+    dispatch(push('/'));
+
+    dispatch(Notifications.success({
+      title: 'Success',
+      message: 'profile was updated', position: 'tc'
     }));
   } catch (e) {
     dispatch(handleError(e));
@@ -60,7 +79,7 @@ export const logout = values => async dispatch => {
 
 export const getProfile = values => async dispatch => {
   try {
-    const { data: user } = await axios.get('/api/users/me');
+    const { data: user } = await axios.get('/api/users/');
 
     dispatch(authenticateUser());
     dispatch(addItem(user));

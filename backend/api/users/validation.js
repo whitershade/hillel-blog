@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 module.exports = {
-  register: {
+  createItem: {
     body: {
       email: Joi
         .string()
@@ -20,4 +20,16 @@ module.exports = {
         .string()
     },
   },
+  patchItem: {
+    body: {
+      email: Joi
+        .string()
+        .trim()
+        .email()
+        .min(5)
+        .max(100),
+      name: Joi
+        .string()
+    },
+  }
 };
