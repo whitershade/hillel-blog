@@ -9,12 +9,12 @@ const controllers = require('./controllers');
 const router = Router();
 
 router
-  .post(
-    '/',
-    middlewares.isAuth,
-    middlewares.validate(validation.createItem),
-    controllers.createItem
-  )
+	.post(
+		'/',
+		middlewares.isAuth,
+		middlewares.validate(validation.createItem),
+		controllers.createItem
+	);
 
 
 module.exports = router;

@@ -10,47 +10,47 @@ const UsersModel = require('./api/users/model').model;
 
 
 module.exports = (app) => {
-  app.use(expressSession({
-    secret: process.env.SECRET,
-    resave: false,
-    saveUninitialized: false,
-    unset: 'destroy',
-    cookie: {
-      maxAge: 10000000,
-    },
-    store: new MongoDBStore({
-      uri: process.env.MONGODB_URI,
-      collection: 'mySessions',
-    }),
-  }));
+	app.use(expressSession({
+		secret: process.env.SECRET,
+		resave: false,
+		saveUninitialized: false,
+		unset: 'destroy',
+		cookie: {
+			maxAge: 10000000
+		},
+		store: new MongoDBStore({
+			uri: process.env.MONGODB_URI,
+			collection: 'mySessions'
+		})
+	}));
 
-  passport.use(new LocalStrategy(
-    {
-      usernameField: 'email',
-      passwordField: 'password',
-    },
-    UsersModel.checkUser.bind(UsersModel),
-  ));
+	passport.use(new LocalStrategy(
+		{
+			usernameField: 'email',
+			passwordField: 'password'
+		},
+		UsersModel.checkUser.bind(UsersModel),
+	));
 
-  passport.serializeUser(UsersModel.serializeUser.bind(UsersModel));
-  passport.deserializeUser(UsersModel.deserializeUser.bind(UsersModel));
+	passport.serializeUser(UsersModel.serializeUser.bind(UsersModel));
+	passport.deserializeUser(UsersModel.deserializeUser.bind(UsersModel));
 
-  app.use(passport.initialize());
-  app.use(passport.session());
+	app.use(passport.initialize());
+	app.use(passport.session());
 
-  app.use(express.json());
-  app.use(express.urlencoded({ extended: false }));
+	app.use(express.json());
+	app.use(express.urlencoded({ extended: false }));
 
-  app.use('/api', api);
+	app.use('/api', api);
 
-  app.use((err, req, res, next) => {
-    console.error('SOME ERR', err);
-    res.status(400).send({ message: err && err.message ? err.message : err });
-  });
+	app.use((err, req, res, next) => {
+		console.error('SOME ERR', err);
+		res.status(400).send({ message: err && err.message ? err.message : err });
+	});
 
-  app.use(express.static(path.join(rootPath, '..', 'frontend', 'build')));
-  app.use(express.static(path.join(rootPath, '..', 'tmp')));
-  app.get('/*', (req, res) => {
-    res.sendFile(path.join(rootPath, '..', 'frontend', 'build', 'index.html'));
-  });
+	app.use(express.static(path.join(rootPath, '..', 'frontend', 'build')));
+	app.use(express.static(path.join(rootPath, '..', 'tmp')));
+	app.get('/*', (req, res) => {
+		res.sendFile(path.join(rootPath, '..', 'frontend', 'build', 'index.html'));
+	});
 };

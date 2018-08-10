@@ -8,10 +8,10 @@ const upload = require('../../utils/multer');
 const routes = Router();
 
 routes.post(
-  '/',
-  mdl.isAuth,
-  upload.single('image'),
-  controllers.fileUploaded
+	'/',
+	mdl.isAuth,
+	upload.single('image'),
+	controllers.fileUploaded
 );
 
 

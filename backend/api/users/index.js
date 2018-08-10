@@ -9,31 +9,31 @@ const controllers = require('./controllers');
 const router = Router();
 
 router
-  .get(
-    '/',
-    middlewares.isAuth,
-    controllers.getItem
-  )
-  .get(
-    '/logout',
-    middlewares.isAuth,
-    controllers.logout
-  )
-  .post(
-    '/',
-    middlewares.validate(validation.createItem),
-    controllers.createItem
-  )
-  .patch(
-    '/',
-    middlewares.validate(validation.patchItem),
-    controllers.patchItem
-  )
-  .post(
-    '/login',
-    passport.authenticate('local', {}),
-    controllers.login
-  );
+	.get(
+		'/',
+		middlewares.isAuth,
+		controllers.getItem
+	)
+	.get(
+		'/logout',
+		middlewares.isAuth,
+		controllers.logout
+	)
+	.post(
+		'/',
+		middlewares.validate(validation.createItem),
+		controllers.createItem
+	)
+	.patch(
+		'/',
+		middlewares.validate(validation.patchItem),
+		controllers.patchItem
+	)
+	.post(
+		'/login',
+		passport.authenticate('local', {}),
+		controllers.login
+	);
 
 
 module.exports = router;

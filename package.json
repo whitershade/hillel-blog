@@ -20,6 +20,7 @@
     "nodemon": "^1.18.3"
   },
   "devDependencies": {
+    "@zeit/eslint-config-base": "^0.3.0",
     "babel-eslint": "^8.2.6",
     "eslint": "^5.3.0",
     "eslint-config-airbnb": "^17.0.0",
