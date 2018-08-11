@@ -4,7 +4,7 @@ import './styles.css';
 
 const Footer = () => (
   <footer className="footer">
-    whitershade
+    blog by whitershade
   </footer>
 );
 

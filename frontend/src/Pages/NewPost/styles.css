@@ -1,0 +1,19 @@
+.file-to-copy {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.file-to-copy code {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.file-to-copy img {
+  max-width: 500px;
+}
+
+.preview {
+  border: 1px solid #B8C5D6;
+  border-radius: 5px;
+  padding: 10px;
+}
