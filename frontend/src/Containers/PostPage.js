@@ -7,12 +7,14 @@ import {
 
 
 const mapStateToProps = (state, props) => {
+  const isLoading = state.posts.isLoading;
   const post = state.posts.data[props.match.params.id];
   const currentUserId = state.user.profile._id;
   const canEdit = post && post.addedBy._id === currentUserId;
 
   return {
     canEdit,
+    isLoading,
     id: props.match.params.id,
     isAuthenticated: state.user.isAuthenticated,
     post: state.posts.data[props.match.params.id],

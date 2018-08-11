@@ -9,6 +9,7 @@ const initialState = {
 
 export default function (state = initialState, { type, payload }) {
   switch (type) {
+    case types.START_LOAD_ITEM:
     case types.START_LOAD_ITEMS:
       return { ...state, isLoading: true };
 
@@ -19,6 +20,7 @@ export default function (state = initialState, { type, payload }) {
         isLoading: false,
       };
 
+    case types.LOAD_ITEM_ERROR:
     case types.LOAD_ITEMS_ERROR:
       return { ...state, isLoading: false };
 
@@ -30,6 +32,7 @@ export default function (state = initialState, { type, payload }) {
           ...state.data,
           [payload._id]: payload,
         },
+        isLoading: false,
       };
 
     case types.REMOVE_ITEM:
@@ -52,8 +55,6 @@ export default function (state = initialState, { type, payload }) {
           },
         },
       };
-
-      return state;
     }
 
     default:

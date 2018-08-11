@@ -9,9 +9,9 @@ export const startLoadItems = createAction(types.START_LOAD_ITEMS);
 export const addItems = createAction(types.ADD_ITEMS);
 export const loadtemsError = createAction(types.LOAD_ITEMS_ERROR);
 
-export const startAddItem = createAction(types.START_ADD_ITEM);
+export const startLoadItem = createAction(types.START_LOAD_ITEM);
 export const addItem = createAction(types.ADD_ITEM);
-export const addItemError = createAction(types.ADD_ITEM_ERROR);
+export const loadItemError = createAction(types.LOAD_ITEM_ERROR);
 
 export const startRemoveItem = createAction(types.START_REMOVE_ITEM);
 export const removeItem = createAction(types.REMOVE_ITEM);
@@ -22,11 +22,14 @@ export const updateItem = createAction(types.UPDATE_ITEM);
 export const updateItemError = createAction(types.UPDATE_ITEM_ERROR);
 
 export const loadItem = id => async (dispatch) => {
+  dispatch(startLoadItem());
+
   try {
     const { data: post } = await axios.get(`/api/posts/${id}`);
 
     dispatch(addItem(post));
   } catch (e) {
+    dispatch(loadItemError());
     dispatch(handleError(e));
   }
 };

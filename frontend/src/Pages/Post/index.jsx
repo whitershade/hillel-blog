@@ -4,6 +4,7 @@ import ReactHtmlParser from 'react-html-parser';
 import CommentsBlock from './CommentsBlock';
 import PageWrapper from '../../Decorators/PageWrapper';
 import PageHeader from '../../Components/PageHeader';
+import Loading from '../../Components/Loading';
 import PostInformation from '../../Components/PostInformation';
 import './styles.css';
 
@@ -14,6 +15,8 @@ class Post extends Component {
   }
 
   render() {
+    if (this.props.isLoading) return <Loading />;
+
     const {
       post: {
         _id,
