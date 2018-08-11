@@ -42,7 +42,18 @@ const controllers = {
 	},
 
 	login: (req, res) => {
-		res.status(200).send(pick(req.user, ['_id', 'email', 'name']));
+		UsersModel
+			.findById(req.user._id)
+			.then((user) => {
+				if (!user) {
+					res.status(404).send();
+				}
+
+				res.send(user);
+			})
+			.catch((e) => {
+				res.status(400).send(e);
+			});
 	},
 
 	logout: (req, res) => {
